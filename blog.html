@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Career Pivoting to Tech</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #000000;
+            --accent: #0066ff;
+            --success: #00d4aa;
+            --warning: #ff6b35;
+            --text-dark: #000000;
+            --text-light: #666666;
+            --bg-white: #ffffff;
+            --bg-light: #f8f8f8;
+            --border: #e5e5e5;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .header-cta {
+            background: var(--primary);
+            color: var(--bg-white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Blog Hero */
+        .blog-hero {
+            padding: 10rem 0 4rem;
+            background: var(--bg-light);
+            text-align: center;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .blog-hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            padding: 4rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .blog-tag {
+            background: var(--accent);
+            color: var(--bg-white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .read-more:hover {
+            color: var(--primary);
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            background: var(--bg-white);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .featured-badge {
+            background: var(--accent);
+            color: var(--bg-white);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .featured-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .featured-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .btn-featured {
+            background: var(--accent);
+            color: var(--bg-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        
+        .btn-featured:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><a href="index.html" style="color: var(--primary); text-decoration: none;">CareerPivoting</a></div>
+                <nav>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#process">Process</a>
+                    <a href="index.html#services">Programs</a>
+                    <a href="index.html#faq">FAQ</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="index.html#contact">Contact</a>
+                    <a href="https://calendly.com/coach-careerpivoting/30min" class="header-cta">Start Today</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Career Pivoting Blog</h1>
+            <p>Real stories, proven strategies, and honest advice from someone who's been there</p>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="featured-post">
+        <div class="container">
+            <div class="featured-badge">FEATURED POST</div>
+            <h2 class="featured-title">My Tech Salary History: Every Job, Every Raise (The Exact Path from $40k to Six Figures)</h2>
+            <p class="featured-excerpt">Warning: This post contains actual salary numbers, real failures, and the unglamorous truth about breaking into tech. If you're looking for another "I learned to code in 3 months and got hired at Google" story, this isn't it.</p>
+            <div class="featured-meta">
+                <span>📊 Salary Transparency</span>
+                <span>⏱️ 15 min read</span>
+                                   <span>📅 August 2025</span>
+            </div>
+            <a href="blog-salary-history.html" class="btn-featured">Read Full Post →</a>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-grid">
+        <div class="container">
+            <div class="blog-card">
+                <div class="blog-image">🐑</div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-tag">Career Strategy</span>
+                        <span>📅 August 2025</span>
+                    </div>
+                    <h3 class="blog-title">Stop Being a Sheep at Work: Why Your Company's Plan Isn't Your Career Plan</h3>
+                    <p class="blog-excerpt">I spent 3 years following my company's "development path" before realizing it was leading me nowhere. Here's why you need your own goals before drinking the corporate Kool-Aid.</p>
+                    <a href="blog-stop-being-sheep.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tech Salary History: Every Job, Every Raise - Career Pivoting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #000000;
+            --accent: #0066ff;
+            --success: #00d4aa;
+            --warning: #ff6b35;
+            --text-dark: #000000;
+            --text-light: #666666;
+            --bg-white: #ffffff;
+            --bg-light: #f8f8f8;
+            --border: #e5e5e5;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-white);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .blog-post .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .header-cta {
+            background: var(--primary);
+            color: var(--bg-white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Blog Post */
+        .blog-post {
+            padding: 10rem 0 4rem;
+        }
+        
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            padding: 0 20px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .blog-tag {
+            background: var(--accent);
+            color: var(--bg-white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .blog-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .blog-subtitle {
+            display: inline-block;
+            max-width: 90%;
+            margin: 0 auto 1rem auto;
+            padding: 0.75rem 1rem;
+            background: #fff8f8;
+            border-left: 3px solid var(--warning);
+            border-radius: 0 4px 4px 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+            text-align: center;
+        }
+        
+        .blog-subtitle strong {
+            color: var(--warning);
+            font-weight: 700;
+        }
+        
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .blog-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem;
+            color: var(--primary);
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .blog-content strong {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .blog-content em {
+            font-style: italic;
+            color: var(--text-light);
+        }
+        
+        .salary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--bg-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .salary-table th {
+            background: var(--primary);
+            color: var(--bg-white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .salary-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .salary-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .salary-table tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+        
+        .highlight-box {
+            background: var(--bg-light);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            background: var(--primary);
+            color: var(--bg-white);
+            padding: 3rem;
+            border-radius: 16px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: var(--bg-white);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-cta {
+            background: var(--bg-white);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-2px);
+        }
+        
+        .back-to-blog {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+        
+        .back-to-blog:hover {
+            color: var(--primary);
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .blog-title {
+                padding: 0 10px;
+            }
+            
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .salary-table {
+                font-size: 0.9rem;
+            }
+            
+            .salary-table th,
+            .salary-table td {
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .blog-subtitle {
+                max-width: 100%;
+                padding: 0.5rem;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><a href="index.html" style="color: var(--primary); text-decoration: none;">CareerPivoting</a></div>
+                <nav>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#process">Process</a>
+                    <a href="index.html#services">Programs</a>
+                    <a href="index.html#faq">FAQ</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="index.html#contact">Contact</a>
+                    <a href="https://calendly.com/coach-careerpivoting/30min" class="header-cta">Start Today</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Post -->
+    <article class="blog-post">
+        <div class="container">
+            <a href="blog.html" class="back-to-blog">← Back to Blog</a>
+            
+            <header class="blog-header">
+                <div class="blog-meta">
+                    <span class="blog-tag">Salary Transparency</span>
+                    <span>📅 August 2025</span>
+                    <span>⏱️ 15 min read</span>
+                </div>
+                <h1 class="blog-title">My Tech Salary History: From $40k to Six Figures in 5 Years</h1>
+                <div class="blog-subtitle">
+                    <strong>⚠️ Warning:</strong> This post contains actual salary numbers, real failures, and the unglamorous truth about breaking into tech. If you're looking for another "I learned to code in 3 months and got hired at Google" story, this isn't it.
+                </div>
+            </header>
+
+            <div class="blog-content">
+                <h2>The Numbers You Actually Want to See</h2>
+                
+                <table class="salary-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Role</th>
+                            <th>Base Salary</th>
+                            <th>Total Comp</th>
+                            <th>Increase</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Year 1</td>
+                            <td>HR Analyst</td>
+                            <td>$39,995</td>
+                            <td>$39,995</td>
+                            <td>Starting point</td>
+                        </tr>
+                        <tr>
+                            <td>Year 2-3</td>
+                            <td>HRIS Specialist</td>
+                            <td>$70,000</td>
+                            <td>$70,000</td>
+                            <td>+75%</td>
+                        </tr>
+                        <tr>
+                            <td>Year 4</td>
+                            <td>DevOps Engineer</td>
+                            <td>$80,000</td>
+                            <td>$95,000</td>
+                            <td>+35%</td>
+                        </tr>
+                        <tr>
+                            <td>Year 5</td>
+                            <td>Technical Success</td>
+                            <td>$100,000+</td>
+                            <td>$120,000+</td>
+                            <td>+26%</td>
+                        </tr>
+                        <tr style="background: var(--accent); color: var(--bg-white); font-weight: 700;">
+                            <td colspan="2"><strong>Total 5-Year Growth</strong></td>
+                            <td colspan="2"></td>
+                            <td><strong>+200%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Now let me tell you exactly how this happened.</p>
+
+                <h2>Year 1: The $39,995 Reality Check</h2>
+                
+                <p>My first job was as an HR Analyst making exactly $39,995. I still laugh about that number – couldn't they have just rounded up the extra $5?</p>
+                
+                <p><strong>My actual daily schedule looked like:</strong></p>
+                <ul>
+                    <li>8:00 AM - 10:00 AM: Answer phones, reset passwords, "Have you tried turning it off and on?"</li>
+                    <li>10:00 AM - 12:00 PM: Data entry into Workday (mind-numbing)</li>
+                    <li>1:00 PM - 3:00 PM: Payroll corrections (important but repetitive)</li>
+                    <li>3:00 PM - 5:00 PM: More data entry, wondering if this was really it</li>
+                </ul>
+                
+                <p>The job was fine. The people were nice. But every Sunday night, I'd get that sinking feeling in my stomach. <em>Is this really going to be my next 30 years?</em></p>
+                
+                <p><strong>Plot twist:</strong> This "boring" job was actually teaching me the business skills that would make me valuable in tech later. I just didn't know it yet.</p>
+
+                <h2>The Turning Point: One Question Changed Everything</h2>
+                
+                <p>One day, our IT team was implementing a new HRIS system. They were stressed, overwhelmed, and clearly needed help. I asked a simple question:</p>
+                
+                <div class="highlight-box">
+                    <p><em>"Can I help with the testing?"</em></p>
+                </div>
+                
+                <p>That question led to me spending lunches with the IT team, learning how they thought about problems. I'd stay after work to understand system architecture. I even created a testing spreadsheet that caught 47 bugs before launch.</p>
+                
+                <p>The IT director pulled me aside: "You should look into HRIS roles. You understand both sides."</p>
+
+                <h2>Year 2-3: The $70,000 Breakthrough (And My First Real Tech Exposure)</h2>
+                
+                <p><strong>Role:</strong> HRIS Specialist<br>
+                <strong>Salary:</strong> $70,000 (75% raise!)<br>
+                <strong>How I got it:</strong> Applied to 23 jobs, got 4 interviews, 1 offer</p>
+                
+                <p>This role changed everything. Suddenly I was:</p>
+                <ul>
+                    <li>Testing and troubleshooting software systems for operational readiness</li>
+                    <li>Planning and implementing applications across multiple platforms</li>
+                    <li>Training 50+ recruiters on the HR platform and data extraction</li>
+                    <li>Building applications that solved real problems with real data</li>
+                </ul>
+                
+                <p>But here's what really mattered – I got exposed to:</p>
+                <ul>
+                    <li><strong>AWS</strong> (started with S3 for storing reports)</li>
+                    <li><strong>Terraform</strong> (infrastructure as code blew my mind)</li>
+                    <li><strong>Python</strong> (began with simple automation scripts)</li>
+                </ul>
+                
+                <p><strong>The exact moment I knew I needed to pivot to tech:</strong> I built a Python script that automated 3 hours of daily report generation down to 5 minutes. My boss loved it. I realized I loved building solutions more than using them.</p>
+
+                <h2>The Certification Journey: How I Studied (And Failed)</h2>
+                
+                <p>I decided to go all-in on certifications. Here's my exact study schedule:</p>
+                
+                <h3>AWS Cloud Practitioner (Passed in 3 weeks)</h3>
+                <ul>
+                    <li>5:00 AM - 7:00 AM: Study before work</li>
+                    <li>Lunch break: 20 minutes of practice questions</li>
+                    <li>8:00 PM - 9:00 PM: Video courses (Stephane Maarek on Udemy)</li>
+                    <li>Weekends: 4-hour practice exam sessions</li>
+                    <li><strong>Total hours:</strong> 63 hours</li>
+                    <li><strong>Cost:</strong> $100 exam + $47 in courses</li>
+                </ul>
+                
+                <p>That first pass notification? I screenshot it and made it my phone wallpaper. Finally, proof I could do this.</p>
+                
+                <h3>Terraform Associate (Failed first attempt)</h3>
+                <ul>
+                    <li>Studied 4 weeks, 80+ hours</li>
+                    <li><strong>What I did wrong:</strong> Only watched videos, didn't do hands-on labs</li>
+                    <li><strong>Failure score:</strong> 68% (needed 70% – those 2% haunted me)</li>
+                </ul>
+                
+                <p>I literally cried in my car in the testing center parking lot. Called my wife sobbing: "Maybe I'm not cut out for tech." She reminded me that I'd already come so far from that $40k HR role. "Try again," she said. "We believe in you."</p>
+                
+                <h3>Second attempt (Passed after 4 more weeks)</h3>
+                <ul>
+                    <li>Changed approach: 80% hands-on labs, 20% theory</li>
+                    <li>Built 5 complete projects before retaking</li>
+                    <li><strong>Pass score:</strong> 87%</li>
+                </ul>
+                
+                <p>Suddenly, I felt like a badass DevOps Engineer. Updated my LinkedIn headline: "HR Professional → DevOps Engineer | AWS & Terraform Certified"</p>
+                
+                <p><strong>LinkedIn views jumped from 3/week to 87/week overnight.</strong></p>
+
+                <h2>Year 4: The $100,000 DevOps Role (The Network Effect)</h2>
+                
+                <p><strong>Applied to:</strong> 100+ DevOps roles<br>
+                <strong>Responses:</strong> 8 interviews<br>
+                <strong>Results:</strong> 7 rejections for being "too green"</p>
+                
+                <p>I was getting destroyed in interviews:</p>
+                <ul>
+                    <li>"Explain Kubernetes networking" (I couldn't)</li>
+                    <li>"How does the internet work?" (I panicked on this basic question)</li>
+                    <li>"Explain DevOps like I'm 5" (I gave a 10-minute rambling answer)</li>
+                    <li>"Write a Terraform module on this whiteboard" (I froze)</li>
+                    <li>"You have great foundations but need production experience" (catch-22)</li>
+                </ul>
+                
+                <p>Then my mentor reached out:</p>
+                
+                <div class="highlight-box">
+                    <p><em>"Hey, a friend's startup needs a DevOps engineer. They're willing to train the right person. Interested?"</em></p>
+                </div>
+                
+                <p><strong>The 4-round interview process:</strong></p>
+                <ol>
+                    <li>Technical screen (basic AWS, Terraform questions)</li>
+                    <li>Take-home project (deploy a 3-tier app)</li>
+                    <li>Team culture fit</li>
+                    <li>Final with CTO</li>
+                </ol>
+                
+                <p><strong>The offer:</strong> $80,000 base + up to $20k bonus</p>
+                
+                <p><strong>Reality check:</strong> I averaged $15k in bonuses. But the learning? Priceless.</p>
+
+                <h2>What DevOps Actually Looked Like (The Unglamorous Truth)</h2>
+                
+                <p><strong>The good:</strong></p>
+                <ul>
+                    <li>Learned GCP on the job (despite only knowing AWS)</li>
+                    <li>Became fluent in Docker, Kubernetes, CI/CD</li>
+                    <li>Wrote Python scripts that saved 10 hours/week</li>
+                </ul>
+                
+                <p><strong>The brutal:</strong></p>
+                <ul>
+                    <li>2 AM PagerDuty alerts: "Production is down"</li>
+                    <li>Writing RCAs (Root Cause Analysis) until my eyes bled</li>
+                    <li>One incident caused $50k in lost revenue (I didn't sleep for 3 days)</li>
+                    <li>Imposter syndrome hit HARD</li>
+                </ul>
+                
+                <p><strong>The RCA that changed my career:</strong> After a major outage, I wrote a 10-page RCA that was so thorough, the CEO shared it company-wide as "how to handle incidents." That document taught me technical writing is as valuable as technical skills.</p>
+
+                <h2>Year 5: The Six-Figure TAM Role (Business + Tech = Money)</h2>
+                
+                <p>Through continuous learning, I discovered Forrest Brazeal's <a href="https://cloudresumechallenge.dev/" style="color: var(--accent);">Cloud Resume Challenge</a>. Built it in 2 weeks, posted on LinkedIn.</p>
+                
+                <p>Around this time, I'd met a recruiter at a conference. Didn't think much of it - just exchanged LinkedIn connections like you do. Weeks later, he reached out about a Technical Account Manager (TAM) role they had. I'd never heard of it.</p>
+                
+                <p><strong>The TAM revelation:</strong></p>
+                <ul>
+                    <li>Use technical skills ✓</li>
+                    <li>Talk to customers ✓</li>
+                    <li>Help sales hit quotas = commissions ✓</li>
+                    <li>No more 2 AM alerts ✓</li>
+                </ul>
+                
+                <p><strong>Current compensation:</strong></p>
+                <ul>
+                    <li>Base: $100,000+</li>
+                    <li>Commissions: ~$20k/year</li>
+                    <li>Total: $120,000+</li>
+                    <li>Work-life balance: Restored</li>
+                </ul>
+
+                <h2>What I'd Do Differently (Learn From My Mistakes)</h2>
+                
+                <ol>
+                    <li><strong>Start with CompTIA A+ first</strong> - Better foundation than jumping to AWS</li>
+                    <li><strong>Join communities earlier</strong> - I lone-wolfed it for too long</li>
+                    <li><strong>Document everything</strong> - Lost so many good project examples</li>
+                    <li><strong>Network from day 1</strong> - Every job came from connections</li>
+                    <li><strong>Negotiate harder</strong> - Left $10k on the table (always negotiate)</li>
+                </ol>
+
+                <h2>The LinkedIn Message That Changed Everything</h2>
+                
+                <p>Here's the exact message I sent to connect with mentors:</p>
+                
+                <div class="highlight-box">
+                    <p><em>"Hi [Name], I'm an HR professional transitioning to tech. I noticed you made a similar transition from [their background] to DevOps. I'm currently studying for AWS certs and would love to hear one piece of advice you wish you knew starting out. Would you be open to a brief 15-minute virtual coffee chat?"</em></p>
+                </div>
+                
+                <p><strong>Success rate:</strong> 12 messages sent, 7 responses, 3 became mentors</p>
+
+                <h2>The Hard Truth Nobody Tells You</h2>
+                
+                <ul>
+                    <li><strong>It took 5 years, not 6 months</strong></li>
+                    <li><strong>I failed more than I succeeded</strong></li>
+                    <li><strong>I cried actual tears of frustration</strong></li>
+                    <li><strong>Imposter syndrome never fully goes away</strong></li>
+                    <li><strong>But every single struggle was worth it</strong></li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <p><em>"The only thing that remains constant in this universe is change. Those who can adapt persevere; those who cannot merely fade away."</em></p>
+                </div>
+
+                <h2>Ready to Start Your Journey?</h2>
+                
+                <p>If you're sitting at your desk right now, making less than you're worth, wondering if tech is really possible for you – it is. But you need more than motivation. You need a plan.</p>
+                
+                <p><strong>I help professionals create their tech transition roadmap based on my exact path (minus the mistakes).</strong></p>
+
+                <h3>Your Next Step</h3>
+                
+                <ul>
+                    <li>📍 <strong>Quick Win Session - $49</strong><br>
+                    Get unstuck with your exact next step. Leave with one clear action.<br>
+                    <a href="https://calendly.com/coach-careerpivoting/30min" style="color: var(--accent);">Book your session →</a></li>
+                    
+                    <li>📋 <strong>90-Day Roadmap - $99</strong><br>
+                    Your complete plan: certifications, timeline, target roles<br>
+                    <a href="https://calendly.com/coach-careerpivoting/30min" style="color: var(--accent);">Get your personalized roadmap →</a></li>
+                    
+                    <li>🚀 <strong>90-Day Sprint - $199</strong><br>
+                    Everything above + weekly group coaching + Discord community<br>
+                    <a href="https://calendly.com/coach-careerpivoting/30min" style="color: var(--accent);">Join the next cohort →</a></li>
+                </ul>
+                
+                <p><strong>Still skeptical?</strong> Start with a free <a href="https://calendly.com/coach-careerpivoting/30min" style="color: var(--accent);">Discovery Call</a>. No pitch, just an honest conversation about whether tech is right for you.</p>
+
+                <div class="cta-section">
+                    <h2>Ready to Transform Your Career?</h2>
+                    <p>Book your free discovery call and let's see if tech is the right path for you. No pressure, just an honest conversation.</p>
+                    <a href="https://calendly.com/coach-careerpivoting/30min" class="btn-cta">Book Your Free Call</a>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--border);">
+                
+                <p><strong>About the Author:</strong> I'm now a Technical Success Manager at a DevOps company, helping others make the same transition (without taking 5 years). Send me an email at <a href="mailto:coach@careerpivoting.com" style="color: var(--accent);">coach@careerpivoting.com</a>.</p>
+            </div>
+        </div>
+    </article>
+</body>
+</html>
