@@ -790,6 +790,109 @@
             box-shadow: var(--shadow-xl);
         }
         
+        /* FAQ Section */
+        .faq-section {
+            padding: 6rem 0;
+            background: var(--bg-white);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .faq-item {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .faq-item h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .faq-item p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+        
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-method {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-method h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .contact-method p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
         /* Footer */
         footer {
             background: var(--bg-white);
@@ -863,6 +966,16 @@
             .process-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             
             nav {
@@ -1207,13 +1320,74 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
         <div class="container">
-            <div class="cta-content">
+            <div class="section-header">
+                <div class="section-badge">COMMON QUESTIONS</div>
+                <h2>Frequently Asked Questions</h2>
+                <p>Get answers to the most common questions about pivoting to tech</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Do I need a computer science degree?</h3>
+                    <p>No! Many successful tech professionals come from non-technical backgrounds. What matters most is your willingness to learn and the right certifications for your target role.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How long does it take to break into tech?</h3>
+                    <p>Most people can land their first tech role within 6-12 months with focused effort. The key is following a proven roadmap and staying consistent with your learning.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What if I'm not good at math?</h3>
+                    <p>Many tech roles don't require advanced math. Technical Success, Sales Engineering, and many cloud roles focus on problem-solving and communication skills.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How much should I expect to earn?</h3>
+                    <p>Entry-level tech roles typically start at $60k-80k, with rapid growth potential. Within 2-3 years, many people reach six figures.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Which certifications should I start with?</h3>
+                    <p>Start with AWS Cloud Practitioner or CompTIA A+ for foundational knowledge. Then move to role-specific certifications based on your target position.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I do this while working full-time?</h3>
+                    <p>Absolutely! Most successful pivots happen while working. Dedicate 1-2 hours daily to learning and certifications. Consistency beats intensity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">GET IN TOUCH</div>
                 <h2>Ready to Transform Your Career?</h2>
-                <p>Join hundreds of others who've successfully pivoted to tech without the traditional path</p>
-                <a href="https://calendly.com/coach-careerpivoting/30min" class="btn btn-cta">Start Your Journey Today</a>
+                <p>Have questions about your tech pivot? Let's talk about your specific situation</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Start a Conversation</h3>
+                    <p>Whether you're just exploring tech careers or ready to dive in, I'm here to help. Send me an email with your questions, and I'll get back to you within 24 hours.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>Email Me Directly</h4>
+                                <p>coach@careerpivoting.com</p>
+                                <a href="mailto:coach@careerpivoting.com" class="btn btn-primary">Send Email</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">📅</div>
+                            <div>
+                                <h4>Book a Discovery Call</h4>
+                                <p>30-minute free consultation to assess your situation</p>
+                                <a href="https://calendly.com/coach-careerpivoting/30min" class="btn btn-secondary">Schedule Call</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1230,7 +1404,7 @@
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-copyright">
-                    © 2024 CareerPivoting. All rights reserved.
+                    © 2025 CareerPivoting. All rights reserved.
                 </div>
             </div>
         </div>
