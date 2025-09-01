@@ -333,7 +333,7 @@
         
         .tiers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 4rem;
         }
@@ -543,7 +543,7 @@
         
         .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 2rem;
             margin-top: 4rem;
         }
@@ -599,7 +599,7 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-top: 4rem;
         }
@@ -798,6 +798,11 @@
                 gap: 1.5rem;
             }
             
+            .process-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+            
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -810,11 +815,19 @@
             }
             
             .stats-grid,
-            .process-grid,
-            .tiers-grid,
-            .services-grid,
             .timeline-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .tiers-grid,
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
             
             nav {
@@ -835,6 +848,15 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tiers-grid,
+            .services-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
         }
     </style>
