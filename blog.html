@@ -155,7 +155,7 @@
         .blog-grid {
             padding: 4rem 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
         }
         
@@ -229,64 +229,16 @@
             color: var(--primary);
         }
         
-        /* Featured Post */
-        .featured-post {
-            background: var(--bg-white);
-            border: 2px solid var(--accent);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .featured-badge {
-            background: var(--accent);
-            color: var(--bg-white);
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-        
-        .featured-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-        
-        .featured-excerpt {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .featured-meta {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-        
-        .btn-featured {
-            background: var(--accent);
-            color: var(--bg-white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        
-        .btn-featured:hover {
-            transform: translateY(-2px);
-        }
+
         
         /* Mobile */
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .blog-hero h1 {
                 font-size: 2.5rem;
@@ -294,6 +246,7 @@
             
             .blog-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
             
             nav {
@@ -332,24 +285,22 @@
         </div>
     </section>
 
-    <!-- Featured Posts -->
-    <section class="featured-post">
-        <div class="container">
-            <div class="featured-badge">LATEST POST</div>
-            <h2 class="featured-title">The Francis Bacon Approach to IT Career Success: Why Less is More in Learning</h2>
-            <p class="featured-excerpt">Discover how 400-year-old wisdom about focused learning can transform your tech career transition. Learn why depth beats breadth in tech learning and how to avoid the "learn everything" trap that derails most IT career transitions.</p>
-            <div class="featured-meta">
-                <span>🎯 Career Strategy</span>
-                <span>⏱️ 8 min read</span>
-                <span>📅 January 2025</span>
-            </div>
-            <a href="blog-francis-bacon-approach.html" class="btn-featured">Read Full Post →</a>
-        </div>
-    </section>
-
     <!-- Blog Grid -->
     <section class="blog-grid">
         <div class="container">
+            <div class="blog-card">
+                <div class="blog-image">🎯</div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-tag">Career Strategy</span>
+                        <span>📅 January 2025</span>
+                    </div>
+                    <h3 class="blog-title">The Francis Bacon Approach to IT Career Success: Why Less is More in Learning</h3>
+                    <p class="blog-excerpt">Discover how 400-year-old wisdom about focused learning can transform your tech career transition. Learn why depth beats breadth in tech learning and how to avoid the "learn everything" trap.</p>
+                    <a href="blog-francis-bacon-approach.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+            
             <div class="blog-card">
                 <div class="blog-image">🎯</div>
                 <div class="blog-content">
@@ -358,7 +309,7 @@
                         <span>📅 January 2025</span>
                     </div>
                     <h3 class="blog-title">How to Overcome Job Rejection: Why I Keep All 73 Rejection Emails</h3>
-                    <p class="blog-excerpt">Learn how to overcome job rejection and turn it into fuel for success. After 73 rejections, I discovered the mindset shift that changes everything. Discover the BRAVE method that transforms rejection from your enemy into your teacher.</p>
+                    <p class="blog-excerpt">Learn how to overcome job rejection and turn it into fuel for success. After 73 rejections, I discovered the mindset shift that changes everything. Discover the BRAVE method.</p>
                     <a href="blog-rejection-resilience.html" class="read-more">Read More →</a>
                 </div>
             </div>
