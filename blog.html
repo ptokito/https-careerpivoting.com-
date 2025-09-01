@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Career Pivoting to Tech</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <style>
         * {
             margin: 0;
@@ -56,9 +59,41 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            position: relative;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 12px solid var(--bg-white);
         }
         
         nav {
@@ -272,7 +307,10 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo"><a href="index.html" style="color: var(--primary); text-decoration: none;">CareerPivoting</a></div>
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="color: var(--primary); text-decoration: none;">CareerPivoting</a>
+                </div>
                 <nav>
                     <a href="index.html#about">About</a>
                     <a href="index.html#process">Process</a>

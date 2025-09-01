@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career Pivoting - From $40k to Six Figures in Tech</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -68,10 +71,42 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             font-size: 1.5rem;
             font-weight: 800;
             color: var(--primary);
             letter-spacing: -0.025em;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            position: relative;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 12px solid var(--bg-white);
         }
         
         .logo a {
@@ -866,7 +901,10 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo"><a href="#">CareerPivoting</a></div>
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="#">CareerPivoting</a>
+                </div>
                 <nav>
                     <a href="#about">About</a>
                     <a href="#process">Process</a>
