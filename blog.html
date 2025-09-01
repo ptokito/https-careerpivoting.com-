@@ -157,6 +157,12 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
+            width: 100%;
+        }
+        
+        .blog-grid .container {
+            max-width: 100%;
+            padding: 0 2rem;
         }
         
         .blog-card {
@@ -165,6 +171,8 @@
             border-radius: 16px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            min-width: 0;
         }
         
         .blog-card:hover {
@@ -287,7 +295,7 @@
 
     <!-- Blog Grid -->
     <section class="blog-grid">
-        <div class="container">
+        <div class="container" style="max-width: 100%; padding: 0 2rem;">
             <div class="blog-card">
                 <div class="blog-image">🎯</div>
                 <div class="blog-content">
