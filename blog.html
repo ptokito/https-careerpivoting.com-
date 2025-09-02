@@ -157,8 +157,9 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
         .blog-card {
@@ -293,7 +294,6 @@
 
     <!-- Blog Grid -->
     <section class="blog-grid">
-        <div style="max-width: 100%; padding: 0 2rem; margin: 0;">
             <div class="blog-card">
                 <div class="blog-image">🎯</div>
                 <div class="blog-content">
@@ -345,7 +345,6 @@
                     <a href="blog-stop-being-sheep.html" class="read-more">Read More →</a>
                 </div>
             </div>
-        </div>
     </section>
 </body>
 </html>
