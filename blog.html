@@ -153,16 +153,12 @@
         
         /* Blog Grid */
         .blog-grid {
-            padding: 4rem 0;
+            padding: 4rem 2rem;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
-            width: 100%;
-        }
-        
-        .blog-grid .container {
-            max-width: 100%;
-            padding: 0 2rem;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
         }
         
         .blog-card {
@@ -244,6 +240,7 @@
             .blog-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
+                padding: 4rem 1.5rem;
             }
         }
         
@@ -255,6 +252,7 @@
             .blog-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+                padding: 4rem 1rem;
             }
             
             nav {
@@ -295,7 +293,7 @@
 
     <!-- Blog Grid -->
     <section class="blog-grid">
-        <div class="container" style="max-width: 100%; padding: 0 2rem;">
+        <div style="max-width: 100%; padding: 0 2rem; margin: 0;">
             <div class="blog-card">
                 <div class="blog-image">🎯</div>
                 <div class="blog-content">
